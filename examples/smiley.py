@@ -11,12 +11,12 @@ seed(1)
 # Generate problem data (draw smiley with -1's, 1's)
 m, n, k = 500, 500, 8
 data = -ones((m, n))
-for i,j in product(range(120, 190), range(120, 190)): 
+for i,j in product(list(range(120, 190)), list(range(120, 190))): 
     d = (155-i)**2 + (155-j)**2
     if d <= 35**2: 
         data[i,j] = 1
         data[i, m-j] = 1
-for i,j in product(range(300, 451), range(100, 251)):
+for i,j in product(list(range(300, 451)), list(range(100, 251))):
     d = (250 - i)**2 + (250-j)**2
     if d <= 200**2 and d >= 150**2: 
         data[i,j] = 1

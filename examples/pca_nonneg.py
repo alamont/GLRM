@@ -29,7 +29,7 @@ ch = glrm_nn.convergence() # convergence history
 pplot([A, A_hat, A - A_hat], ["original", "glrm", "error"])
 
 # Now with missing data
-missing = list(product(range(int(0.25*m), int(0.75*m)), range(int(0.25*n), int(0.75*n))))
+missing = list(product(list(range(int(0.25*m), int(0.75*m))), list(range(int(0.25*n), int(0.75*n)))))
 glrm_nn_missing = GLRM(A, loss, regX, regY, k, missing)
 glrm_nn_missing.fit()
 A_hat = glrm_nn_missing.predict()

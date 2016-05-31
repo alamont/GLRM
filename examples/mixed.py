@@ -38,8 +38,8 @@ ch = glrm_mix.convergence() # convergence history
 pplot([hstack(A), A_hat, hstack(A)-A_hat], ["original", "glrm", "error"])
 
 # Now with missing data
-missing = [list(product(range(35, 50), range(n1-5, n1))), list(product(range(35,
-    50), range(0, n2))), list(product(range(35, 50), range(0, n3-5)))]
+missing = [list(product(list(range(35, 50)), list(range(n1-5, n1)))), list(product(list(range(35,
+    50)), list(range(0, n2)))), list(product(list(range(35, 50)), list(range(0, n3-5))))]
 
 glrm_mix_missing = GLRM(A, loss, regX, regY, k, missing)
 glrm_mix_missing.fit()
