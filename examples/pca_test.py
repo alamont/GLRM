@@ -35,5 +35,5 @@ if __name__ == '__main__':
     Z = A-X.dot(Y)
     Zpca = A-Xpca.dot(Ypca)
     for (i,j) in missing[0]: Z[i,j], Zpca[i,j] = 0,0
-    print norm(Z)
-    print norm(Zpca)
+    print(norm(Z))
+    print(norm(Zpca))

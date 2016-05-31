@@ -1,4 +1,4 @@
-from convergence import Convergence
+from .convergence import Convergence
 from numpy import sqrt, repeat, tile, hstack, array, zeros, ones, sqrt, diag, asarray, hstack, vstack, split, cumsum
 from numpy.random import randn
 from copy import copy
@@ -161,7 +161,7 @@ class GLRM(object):
 
     def _finalize_XY(self, Xv, Yv):
         """ Multiply by std, offset by mean """
-        m, k = Xv.shape.size
+        m, k = Xv.size
         self.X = asarray(hstack((Xv.value, ones((m,1)))))
         self.Y = [asarray(yj.value)*tile(mask[0,:],(k+1,1)) \
                 for yj, mask in zip(Yv, self.masks)]

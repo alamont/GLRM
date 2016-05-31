@@ -15,7 +15,7 @@ m, n, k = 50, 50, 5
 sym_noise = 0.2*sqrt(k)*randn(m,n)
 asym_noise = sqrt(k)*randn(m,n) + 3*abs(sqrt(k)*randn(m,n)) # large, sparse noise
 rate = 0.3 # percent of entries that are corrupted by large, outlier noise
-corrupted_entries = sample(list(product(range(m), range(n))), int(m*n*rate))
+corrupted_entries = sample(list(product(list(range(m)), list(range(n)))), int(m*n*rate))
 data = randn(m,k).dot(randn(k,n))
 A = data + sym_noise
 for ij in corrupted_entries: A[ij] += asym_noise[ij]
@@ -37,7 +37,7 @@ pplot([data, A, A_hat, data-A_hat], ["original", "corrupted", "glrm", "error"])
 
 # Now with missing data
 from numpy.random import choice
-missing = list(product(range(int(0.25*m), int(0.75*m)), range(int(0.25*n), int(0.75*n))))
+missing = list(product(list(range(int(0.25*m), int(0.75*m))), list(range(int(0.25*n), int(0.75*n)))))
 
 glrm_huber_missing = GLRM(A, loss, regX, regY, k, missing)
 glrm_huber_missing.fit()
